@@ -29,7 +29,6 @@ export function SignUpForm({
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
     setIsLoading(true);
     setError(null);
 
@@ -40,6 +39,7 @@ export function SignUpForm({
     }
 
     try {
+      const supabase = createClient();
       const { error } = await supabase.auth.signUp({
         email,
         password,

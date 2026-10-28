@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -9,24 +7,18 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Padreganda Merchandise",
-  description: "Official Padreganda merchandise catalog.",
+  title: "LOXADA Merchandise",
+  description: "Clean application starter for LOXADA Merchandise.",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="en">
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
